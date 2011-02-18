@@ -535,7 +535,7 @@ service dbus /system/bin/dbus-daemon --system --nofork
     user bluetooth
     group bluetooth net_bt_admin
 
-service bluetoothd /system/bin/bluetoothd -n /etc/blutooth/main.conf
+service bluetoothd /system/bin/bluetoothd -n /etc/bluetooth/main.conf
     socket bluetooth stream 660 bluetooth bluetooth
     socket dbus_bluetooth stream 660 bluetooth bluetooth
     # init.rc does not yet support applying capabilities, so run as root and
@@ -610,9 +610,9 @@ service installd /system/bin/installd
 #service flash_recovery /system/etc/install-recovery.sh
 #    oneshot
 
-#service sysinit /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
-#    disabled
-#    oneshot
+service sysinit /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
+    disabled
+    oneshot
 
 service racoon /system/bin/racoon
     socket racoon stream 600 system system
